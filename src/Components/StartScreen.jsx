@@ -70,9 +70,9 @@ const StartScreen = ({
     fetchCategories();
   }, []);
 
-  useEffect(() => {
-    console.log(quizzes);
-  }, [quizzes]);
+  // useEffect(() => {
+  //   console.log(quizzes);
+  // }, [quizzes]);
 
   return (
     <>
