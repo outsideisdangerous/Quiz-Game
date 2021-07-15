@@ -76,55 +76,50 @@ const StartScreen = ({
 
   return (
     <>
-      <div>
-        <h2>Enter number of questions</h2>
-        <input
-          id="set-quiz-length"
-          type="number"
-          min={1}
-          max={50}
-          placeholder="Number of Questions"
-          onChange={handleNumOfQuestionInputChange}
-        />
+      <div className="wrapper">
+        <div className="title">
+          <h1>QUIZ GAME</h1>
+        </div>
+        <div>
+          <h2>Enter number of questions</h2>
+          <input
+            id="set-quiz-length"
+            type="number"
+            min={1}
+            max={50}
+            placeholder="Number of Questions"
+            onChange={handleNumOfQuestionInputChange}
+          />
+        </div>
+        <div>
+          <h2>Category</h2>
+          <select onChange={handleCategoryChange}>
+            {categories.map((category) => {
+              return (
+                <option key={category.id} value={category.id}>
+                  {category.name}
+                </option>
+              );
+            })}
+          </select>
+        </div>
+        <div>
+          <h2>Difficulty</h2>
+          <select onChange={handleDifficultyLevelChange}>
+            {difficultyLevels.map((level) => {
+              return (
+                <option key={level} value={level}>
+                  {level}
+                </option>
+              );
+            })}
+          </select>
+        </div>
+        <div>
+          <br />
+          <button onClick={startGame}>Start Quiz</button>
+        </div>
       </div>
-      <div>
-        <h2>Category</h2>
-        <select onChange={handleCategoryChange}>
-          {categories.map((category) => {
-            return (
-              <option key={category.id} value={category.id}>
-                {category.name}
-              </option>
-            );
-          })}
-        </select>
-      </div>
-
-      <div>
-        <h2>Difficulty</h2>
-        <select onChange={handleDifficultyLevelChange}>
-          {difficultyLevels.map((level) => {
-            return (
-              <option key={level} value={level}>
-                {level}
-              </option>
-            );
-          })}
-        </select>
-      </div>
-
-      <div>
-        <br />
-        <button onClick={startGame}>Start Quiz</button>
-      </div>
-
-      {/* <div>
-        <ul>
-          {quizzes.map((quiz, i) => (
-            <li key={i}>{quiz.question}</li>
-          ))}
-        </ul>
-      </div> */}
     </>
   );
 };

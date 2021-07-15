@@ -26,8 +26,10 @@ const App = () => {
   const [gameFinished, setGameFinished] = useState(false);
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
 
-  const [isItCorrect, setIsItCorrect] = useState("");
-  // const [numCorrect, setNumCorrect] = useState(0);
+  // const [isItCorrect, setIsItCorrect] = useState("");
+  const [numCorrect, setNumCorrect] = useState(0);
+
+  const currentQuestion = quizzes[currentQuestionIndex];
 
   const startGame = async () => {
     const questions = await fetchQuestions(
@@ -39,15 +41,47 @@ const App = () => {
     setGameStarted(true);
   };
 
-  const handleOptionClicked = () => {
-    // setIsItCorrect
-    setCurrentQuestionIndex((prevState) => {
-      return prevState + 1;
-    });
+  const handleOptionClickedTrue = () => {
+    if (currentQuestion.correct_answer === "True") {
+      setNumCorrect((prevState) => {
+        return prevState + 1;
+      });
+      setCurrentQuestionIndex((prevState) => {
+        return prevState + 1;
+      });
+    } else {
+      setCurrentQuestionIndex((prevState) => {
+        return prevState + 1;
+      });
+    }
+
     if (currentQuestionIndex === numOfQuestions - 1) {
       setGameFinished(true);
     }
   };
+
+  const handleOptionClickedFalse = () => {
+    if (currentQuestion.correct_answer === "False") {
+      setNumCorrect((prevState) => {
+        return prevState + 1;
+      });
+      setCurrentQuestionIndex((prevState) => {
+        return prevState + 1;
+      });
+    } else {
+      setCurrentQuestionIndex((prevState) => {
+        return prevState + 1;
+      });
+    }
+
+    if (currentQuestionIndex === numOfQuestions - 1) {
+      setGameFinished(true);
+    }
+  };
+
+  useEffect(() => {
+    console.log(numCorrect);
+  }, [numCorrect]);
 
   // useEffect(() => {
   //   if (quizzes.length > 0) setGameStarted(true);
@@ -95,10 +129,13 @@ const App = () => {
           setCategoryId={setCategoryId}
           difficulty={difficulty}
           setDifficulty={setDifficulty}
-          handleOptionClicked={handleOptionClicked}
+          handleOptionClickedTrue={handleOptionClickedTrue}
+          handleOptionClickedFalse={handleOptionClickedFalse}
         />
       )}
-      {gameFinished === true && <Scoreboard />}
+      {gameFinished === true && (
+        <Scoreboard numCorrect={numCorrect} numOfQuestions={numOfQuestions} />
+      )}
     </div>
   );
 };

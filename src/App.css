@@ -1,14 +1,37 @@
-html,
-body {
-  height: 100vh;
-}
-
 html {
-  display: table;
-  margin: auto;
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+  /* display: table;
+  margin: auto; */
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 body {
-  display: table-cell;
-  vertical-align: middle;
+  margin-top: auto;
+  margin-bottom: auto;
+
+  background-image: url("./img/cool-background.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+
+  position: relative;
+}
+
+.title {
+  font-size: 25px;
+}
+
+.wrapper {
+  background-color: rgb(91, 179, 238);
+  box-sizing: border-box;
+  /* border-radius: 2em;
+  border-style: ridge; */
+}
+
+input {
+  width: 20em;
 }
