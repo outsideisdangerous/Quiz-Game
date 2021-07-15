@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-function Scoreboard({ numOfQuestions, numCorrect }) {
+function ScoreBoard({ numOfQuestions, numCorrect }) {
   return (
     <div>
       <h1>Your Results: </h1>
@@ -16,4 +16,4 @@ function Scoreboard({ numOfQuestions, numCorrect }) {
   );
 }
 
-export default Scoreboard;
+export default ScoreBoard;

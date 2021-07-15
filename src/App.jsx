@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import QuizArea from "./Components/QuizArea";
 import StartScreen from "./Components/StartScreen";
 import { fetchQuestions } from "./Utils/questions.utils";
-import Scoreboard from "./Components/Scoreboard";
+import ScoreBoard from "./Components/ScoreBoard";
 import "./App.css";
 
 // const StartScreen = ({ startGame }) => {
@@ -134,7 +134,7 @@ const App = () => {
         />
       )}
       {gameFinished === true && (
-        <Scoreboard numCorrect={numCorrect} numOfQuestions={numOfQuestions} />
+        <ScoreBoard numCorrect={numCorrect} numOfQuestions={numOfQuestions} />
       )}
     </div>
   );
