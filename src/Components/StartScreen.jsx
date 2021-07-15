@@ -29,7 +29,7 @@ const StartScreen = ({
   const handleNumOfQuestionInputChange = (event) => {
     // console.log(event.target.value);
     if (event.target.value > 50) {
-      console.log("The maximum number of questions in a quiz is 50!");
+      alert("Please enter a maximum value of 50 or less!");
     } else {
       setNumOfQuestions(event.target.value);
     }

@@ -32,6 +32,10 @@ body {
   border-style: ridge; */
 }
 
+.wrapper-button {
+  text-align: center;
+}
+
 input {
   width: 20em;
 }

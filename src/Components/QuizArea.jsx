@@ -17,14 +17,18 @@ function QuizArea({
   // const correctQuestion = quizzes[correct_answer]
 
   return (
-    <div>
-      <h1>Question #{questionIndex + 1}</h1>
+    <>
+      <div>
+        <h1>Question #{questionIndex + 1}</h1>
 
-      <h1>{decodeHtml(currentQuestion.question)}</h1>
+        <h1>{decodeHtml(currentQuestion.question)}</h1>
+      </div>
 
-      <button onClick={handleOptionClickedTrue}>True</button>
-      <button onClick={handleOptionClickedFalse}>False</button>
-    </div>
+      <div className="wrapper-button">
+        <button onClick={handleOptionClickedTrue}>True</button>
+        <button onClick={handleOptionClickedFalse}>False</button>
+      </div>
+    </>
   );
 }
 
