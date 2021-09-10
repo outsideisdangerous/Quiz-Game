@@ -17,21 +17,23 @@ const App = () => {
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
 
   const [numCorrect, setNumCorrect] = useState(0);
+  const [error, setError] = useState(null);
 
   const currentQuestion = quizzes[currentQuestionIndex];
 
   const startGame = async () => {
-    const questions = await fetchQuestions(
-      numOfQuestions,
-      difficulty,
-      categoryId
-    );
-    // if (quizzes.length > 0) {
-    setQuizzes(questions);
-    setGameStarted(true);
-    // } else {
-    //   return <div>requires all fields</div>;
-    // }
+    try {
+      setError(null);
+      const questions = await fetchQuestions(
+        numOfQuestions,
+        difficulty,
+        categoryId
+      );
+      setQuizzes(questions);
+      setGameStarted(true);
+    } catch (err) {
+      setError(err.message);
+    }
   };
 
   const handleOptionClickedTrue = () => {
@@ -87,9 +89,10 @@ const App = () => {
           setCategoryId={setCategoryId}
           difficulty={difficulty}
           setDifficulty={setDifficulty}
+          error={error}
         />
       )}
-      {gameStarted === true && gameFinished === false && (
+      {gameStarted === true && gameFinished === false && !error && (
         <QuizArea
           questionIndex={currentQuestionIndex}
           startGame={startGame}

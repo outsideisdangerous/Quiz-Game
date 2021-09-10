@@ -14,6 +14,7 @@ const StartScreen = ({
   setCategories,
   setCategoryId,
   setDifficulty,
+  error,
 }) => {
   const handleDifficultyLevelChange = (e) => {
     setDifficulty(e.target.value);
@@ -98,6 +99,7 @@ const StartScreen = ({
             })}
           </select>
         </div>
+        {error && <div>{error}</div>}
         <div>
           <br />
           <button
