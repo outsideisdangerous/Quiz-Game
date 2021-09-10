@@ -1,19 +1,9 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import QuizArea from "./Components/QuizArea";
 import StartScreen from "./Components/StartScreen";
 import { fetchQuestions } from "./Utils/questions.utils";
 import ScoreBoard from "./Components/ScoreBoard";
 import "./App.css";
-
-// const StartScreen = ({ startGame }) => {
-//   //... All your states are here
-//   // You need to move them up into the parent component
-//   return (
-//     <div>
-//       Start screen<button onClick={startGame}>Start game</button>
-//     </div>
-//   );
-// };
 
 const App = () => {
   const [numOfQuestions, setNumOfQuestions] = useState(0);
@@ -26,7 +16,6 @@ const App = () => {
   const [gameFinished, setGameFinished] = useState(false);
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
 
-  // const [isItCorrect, setIsItCorrect] = useState("");
   const [numCorrect, setNumCorrect] = useState(0);
 
   const currentQuestion = quizzes[currentQuestionIndex];
@@ -37,8 +26,12 @@ const App = () => {
       difficulty,
       categoryId
     );
+    // if (quizzes.length > 0) {
     setQuizzes(questions);
     setGameStarted(true);
+    // } else {
+    //   return <div>requires all fields</div>;
+    // }
   };
 
   const handleOptionClickedTrue = () => {
@@ -79,24 +72,6 @@ const App = () => {
     }
   };
 
-  useEffect(() => {
-    console.log(numCorrect);
-  }, [numCorrect]);
-
-  // useEffect(() => {
-  //   if (quizzes.length > 0) setGameStarted(true);
-  // }, [quizzes]);
-
-  // useEffect(() => {
-  //   if (gameStarted === false) return;
-  // }, [gameStarted]);
-
-  // useEffect(() => {
-  //   if (currentQuestionIndex === numOfQuestions - 1) {
-  //     setGameFinished(true);
-  //   }
-  // }, [currentQuestionIndex, numOfQuestions]);
-
   return (
     <div>
       {gameStarted === false && (
@@ -116,7 +91,6 @@ const App = () => {
       )}
       {gameStarted === true && gameFinished === false && (
         <QuizArea
-          // handleOptionClickedTrue={handleOptionClicked}
           questionIndex={currentQuestionIndex}
           startGame={startGame}
           numOfQuestions={numOfQuestions}

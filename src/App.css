@@ -1,3 +1,15 @@
+:root {
+  --color-primary: #220c10;
+  --color-secondary: #506c64;
+  --color-three: #77cbb9;
+  --color-four: #75b8c8;
+  --color-five: #cdd3d5;
+}
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 html {
   margin: 0;
   padding: 0;
@@ -14,11 +26,12 @@ body {
   margin-top: auto;
   margin-bottom: auto;
 
-  background-image: url("./img/cool-background.png");
+  /* background-image: url("./img/cool-background.png"); */
   background-repeat: no-repeat;
   background-size: cover;
 
   position: relative;
+  @apply bg-secondary text-2xl;
 }
 
 .title {
@@ -26,7 +39,7 @@ body {
 }
 
 .wrapper {
-  background-color: rgb(91, 179, 238);
+  /* background-color: rgb(91, 179, 238); */
   box-sizing: border-box;
   /* border-radius: 2em;
   border-style: ridge; */

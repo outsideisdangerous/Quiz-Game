@@ -14,21 +14,31 @@ function QuizArea({
   correct_answer,
 }) {
   const currentQuestion = quizzes[questionIndex];
-  // const correctQuestion = quizzes[correct_answer]
+  const cQuestion = decodeHtml(currentQuestion.question);
 
   return (
-    <>
-      <div>
+    <section className="bg-four rounded-xl h-32  w-screen shadow-xl">
+      <div className="text-center">
         <h1>Question #{questionIndex + 1}</h1>
 
-        <h1>{decodeHtml(currentQuestion.question)}</h1>
+        <h1>{cQuestion}</h1>
       </div>
 
-      <div className="wrapper-button">
-        <button onClick={handleOptionClickedTrue}>True</button>
-        <button onClick={handleOptionClickedFalse}>False</button>
+      <div className="wrapper-button my-6 ">
+        <button
+          className="border rounded mr-12 bg-five hover:bg-four"
+          onClick={handleOptionClickedTrue}
+        >
+          True
+        </button>
+        <button
+          className="border bg-five rounded hover:bg-four"
+          onClick={handleOptionClickedFalse}
+        >
+          False
+        </button>
       </div>
-    </>
+    </section>
   );
 }
 

@@ -2,10 +2,6 @@ import React, { useCallback, useEffect } from "react";
 import axios from "axios";
 import { fetchQuestions } from "../Utils/questions.utils";
 
-// TODO:  input for question amount
-// TODO: fetch BE according to user's input question amount
-// TODO:
-
 const difficultyLevels = ["easy", "medium", "hard", "all"];
 
 const StartScreen = ({
@@ -19,15 +15,11 @@ const StartScreen = ({
   setCategoryId,
   setDifficulty,
 }) => {
-  // Handlers
-
-  const handleDifficultyLevelChange = (event) => {
-    // console.log(event.target.value);
-    setDifficulty(event.target.value);
+  const handleDifficultyLevelChange = (e) => {
+    setDifficulty(e.target.value);
   };
 
   const handleNumOfQuestionInputChange = (event) => {
-    // console.log(event.target.value);
     if (event.target.value > 50) {
       alert("Please enter a maximum value of 50 or less!");
     } else {
@@ -39,49 +31,40 @@ const StartScreen = ({
     setCategoryId(event.target.value);
   };
 
-  // Fetch Logics
-
   const fetchCategories = useCallback(async () => {
     try {
       const url = "https://opentdb.com/api_category.php";
       const response = await axios.get(url);
-      // console.log(response.data.trivia_categories);
       setCategories(response.data.trivia_categories);
     } catch (error) {
       console.log({ error });
     }
   }, []);
 
-  // const fetchDifficulties = async () => {
-  //   try {
-  //     const url = "https://opentdb.com/api.php";
-  //     const response = await axios.get(url);
-  //     // console.log(response.data);
-  //     setDifficulty(response.data.trivia_difficulty);
-  //   } catch (error) {
-  //     console.log({ error });
-  //   }
-  // };
-
-  // UseEffect Logics
+  const fetchDifficulties = async () => {
+    try {
+      const url = "https://opentdb.com/api.php";
+      const response = await axios.get(url);
+      setDifficulty(response.data.trivia_difficulty);
+    } catch (error) {
+      console.log({ error });
+    }
+  };
 
   useEffect(() => {
-    // Debug
     fetchCategories();
   }, []);
 
-  // useEffect(() => {
-  //   console.log(quizzes);
-  // }, [quizzes]);
-
   return (
-    <>
-      <div className="wrapper">
-        <div className="title">
-          <h1>QUIZ GAME</h1>
+    <section className="">
+      <div className="wrapper bg-four rounded-lg shadow-xl p-6">
+        <div className="title ">
+          <h1 className="text-4xl text-primary rounded bg-three shadow-md text-center font-semibold tracking-wide">
+            QUIZ GAME
+          </h1>
         </div>
         <div>
-          <h2>Enter number of questions</h2>
+          <h2 className="my-1.5 font-semibold">Enter number of questions</h2>
           <input
             id="set-quiz-length"
             type="number"
@@ -92,7 +75,7 @@ const StartScreen = ({
           />
         </div>
         <div>
-          <h2>Category</h2>
+          <h2 className="my-1.5 font-semibold">Category</h2>
           <select onChange={handleCategoryChange}>
             {categories.map((category) => {
               return (
@@ -104,7 +87,7 @@ const StartScreen = ({
           </select>
         </div>
         <div>
-          <h2>Difficulty</h2>
+          <h2 className="my-1.5 font-semibold">Difficulty</h2>
           <select onChange={handleDifficultyLevelChange}>
             {difficultyLevels.map((level) => {
               return (
@@ -117,10 +100,15 @@ const StartScreen = ({
         </div>
         <div>
           <br />
-          <button onClick={startGame}>Start Quiz</button>
+          <button
+            className="z-50 hover:bg-transparent text-gray-700 font-bold py-2 px-4 border-b-4 border-five hover:border-blue rounded"
+            onClick={startGame}
+          >
+            Start Quiz
+          </button>
         </div>
       </div>
-    </>
+    </section>
   );
 };
 

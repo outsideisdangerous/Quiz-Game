@@ -1,17 +1,16 @@
-import React, { useState } from "react";
+import React from "react";
 
 function ScoreBoard({ numOfQuestions, numCorrect }) {
   return (
-    <div>
+    <div className="wrapper bg-four rounded-lg shadow-xl space-y-6">
       <h1>Your Results: </h1>
       <h2>Number of Questions Correct: {numCorrect}</h2>
       <h2>Number of Questions Incorrect: {numOfQuestions - numCorrect}</h2>
       <h2>
-        Your Score percentage:
+        Your Score percentage:{" "}
         {((numCorrect / numOfQuestions) * 100).toFixed(2)}%
       </h2>
-      <h1>Well Done!</h1>
-      <h5>This Quiz was powered by the REACT library</h5>
+      <h1 className="">Well Done!</h1>
     </div>
   );
 }
