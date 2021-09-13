@@ -4,4 +4,4 @@ import "tailwindcss/tailwind.css";
 import App from "./App";
 import "./App.css";
 
-ReactDOM.render(<App />, document.getElementById("root"));
+ReactDOM.render(<App />, document.getElementById("quiz-root"));
